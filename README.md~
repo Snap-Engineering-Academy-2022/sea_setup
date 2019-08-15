@@ -1,4 +1,8 @@
 # ISF G9 CS Student Coding Environment Setup
 
-  # not ready, do not use
+**UNDER CONSTRUCTION**
+
+Copy this into a Terminal window and press Enter to set your computer up for your G9 CS course!
+
+  :::shell
   $ bash < <(curl -sL https://raw.githubusercontent.com/the-isf-academy/g9cs_student_setup/master/setup_script.sh)
