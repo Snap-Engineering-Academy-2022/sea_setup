@@ -31,7 +31,7 @@ brew install direnv
 if [ ! -e /Users/`whoami`/.bash_profile ]; then
     echo 'eval "$(direnv hook bash)"' > /Users/`whoami`/.bash_profile
 else
-    echo 'eval "$(direnv hook bash)"' >> /Users/`whoami`/.bash_profile
+    echo '\n eval "$(direnv hook bash)"' >> /Users/`whoami`/.bash_profile
 fi
 source ~/.bash_profile
 printf "${GREEN}✓✓✓ direnv installed!${NC}\n\n\n"
