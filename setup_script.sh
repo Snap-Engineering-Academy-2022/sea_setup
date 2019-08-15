@@ -28,12 +28,6 @@ printf "${GREEN}✓✓✓ git installed!${NC}\n\n\n"
 
 printf "${BLUE}Installing direnv...${NC}\n"
 brew install direnv
-if [ ! -e /Users/`whoami`/.bash_profile ]; then
-    printf 'eval "$(direnv hook bash)"' > /Users/`whoami`/.bash_profile
-else
-    printf '\neval "$(direnv hook bash)"' >> /Users/`whoami`/.bash_profile
-fi
-source ~/.bash_profile
 printf "${GREEN}✓✓✓ direnv installed!${NC}\n\n\n"
 
 printf "${BLUE}Installing Atom...${NC}\n"
@@ -43,6 +37,11 @@ printf "${GREEN}✓✓✓ Atom installed!${NC}\n\n\n"
 printf "${BLUE}Creating virtual environment...${NC}\n"
 python3 -m venv env
 printf 'PATH_add env/bin' > .envrc
+if [ ! -e /Users/`whoami`/.bash_profile ]; then
+    printf 'eval "$(direnv hook bash)"' > /Users/`whoami`/.bash_profile
+else
+    printf '\neval "$(direnv hook bash)"' >> /Users/`whoami`/.bash_profile
+fi
 source ~/.bash_profile
 direnv allow .
 printf "${GREEN}✓✓✓ virtual environment created! ${NC}\n\n\n"
