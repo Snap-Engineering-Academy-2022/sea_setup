@@ -24,7 +24,7 @@ chmod u+w /usr/local/etc
 printf "${BLUE}Installing Xcode...${NC}\n"
 xcode-select --install
 xcode_version=$( xcode-select --version )
-if [[ "$xcode_version" =~ "1xcode-select version "[2-9][0-9][0-9][0-9]"." ]]; then
+if [[ "$xcode_version" =~ "xcode-select version "[2-9][0-9][0-9][0-9]"." ]]; then
   printf "${GREEN}✓✓✓ Xcode installed!${NC}\n\n\n"
 else
   printf "${RED}Message from version request: %s${NC}\n" "$xcode_version"
@@ -37,7 +37,7 @@ fi
 
 # macOS version check, Hombrew require 10.12 or higher
 printf "${BLUE}Checking macOS version...${NC}\n"
-os_version=$( defaults read -p loginwindow SystemVersionStampAsString )
+os_version=$( defaults read loginwindow SystemVersionStampAsString )
 printf "You are running macOS verion %s.\n" $os_version
 if [[ "$os_version" =~ 10\.1[2-9]\.[0-9]? ]]; then
   printf "${GREEN}✓✓✓ macOS version supported by Homebrew!${NC}\n\n\n"
@@ -53,7 +53,7 @@ fi
 printf "${BLUE}Installing Homebrew...${NC}\n"
 brew_version=$( brew --version )
 if [[ "$brew_version" =~ "Homebrew "2\.[1-9]\.[1-9][0-9]?.? ]]; then
-  printf "${GREEN}✓✓✓ Homebrew alread -py installed !${NC}\n\n\n"
+  printf "${GREEN}✓✓✓ Homebrew already installed !${NC}\n\n\n"
 else
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew_version=$( brew --version )
@@ -73,7 +73,7 @@ fi
 printf "${BLUE}Installing python3...${NC}\n"
 python3_version=$( python3 --version )
 if [[ "$python3_version" =~ "Python "3\.[0-9]\.[0-9]? ]]; then
-  printf "${GREEN}✓✓✓ Python3 alread -py installed!${NC}\n\n\n"
+  printf "${GREEN}✓✓✓ Python3 already installed!${NC}\n\n\n"
 else
   brew install python3
   python3_version=$( python3 --version )
@@ -93,7 +93,7 @@ fi
 printf "${BLUE}Installing git...${NC}\n"
 git_version=$( git --version )
 if [[ "$git_version" =~ "git version "2\.[2-9][0-9]?\.[0-9]? ]]; then
-  printf "${GREEN}✓✓✓ git alread -py installed!${NC}\n\n\n"
+  printf "${GREEN}✓✓✓ git already installed!${NC}\n\n\n"
 else
   brew install git
   git_version=$( git --version )
@@ -113,7 +113,7 @@ fi
 printf "${BLUE}Installing direnv...${NC}\n"
 direnv_version=$( direnv --version )
 if [[ "$direnv_version" =~ 2\.[2-9][0-9]?\.[0-9]? ]]; then
-  printf "${GREEN}✓✓✓ direnv alread -py installed!${NC}\n\n\n"
+  printf "${GREEN}✓✓✓ direnv already installed!${NC}\n\n\n"
 else
   brew install direnv
   direnv_version=$( direnv --version )
@@ -133,7 +133,7 @@ fi
 printf "${BLUE}Installing Atom...${NC}\n"
 atom_version=$( atom --version )
 if [[ "$atom_version" =~ 1\.[2-9][0-9]?\.[0-9]? ]]; then
-  printf "${GREEN}✓✓✓ atom alread -py installed!${NC}\n\n\n"
+  printf "${GREEN}✓✓✓ atom already installed!${NC}\n\n\n"
 else
   brew cask install atom
   atom_version=$( atom --version )
