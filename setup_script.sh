@@ -71,7 +71,7 @@ else
   if [[ "$brew_version" =~ "Homebrew "2\.[1-9]\.[1-9][0-9]?.? ]]; then
     printf "${GREEN}✓✓✓ Homebrew installed !${NC}\n\n\n"
   else
-    printf "${RED}Output from version request: %s\n" "$brew_version${NC}"
+    printf "${RED}Output from version request: %s${NC}\n" "$brew_version"
     printf "${RED}Unexpected output from Homebrew installation. Please ask an instructor for help. ${NC}"
     echo -n "Proceed? [y/n]: "
     read ans
@@ -92,7 +92,7 @@ else
   if [[ "$python3_version" =~ "Python "3\.[0-9]\.[0-9]? ]]; then
     printf "${GREEN}✓✓✓ Python3 installed!${NC}\n\n\n"
   else
-    printf "${RED}Output from version request: %s\n" "$python3_version${NC}"
+    printf "${RED}Output from version request: %s${NC}\n" "$python3_version"
     printf "${RED}Unexpected output from Python3 installation. Please ask an instructor for help. ${NC}"
     echo -n "Proceed? [y/n]: "
     read ans
@@ -113,7 +113,7 @@ else
   if [[ "$git_version" =~ "git version "2\.[2-9][0-9]?\.[0-9]? ]]; then
     printf "${GREEN}✓✓✓ git installed!${NC}\n\n\n"
   else
-    printf "${RED}Output from version request: %s\n" "$git_version${NC}"
+    printf "${RED}Output from version request: %s${NC}\n" "$git_version"
     printf "${RED}Unexpected output from git installation. Please ask an instructor for help. ${NC}"
     echo -n "Proceed? [y/n]: "
     read ans
@@ -134,7 +134,7 @@ else
   if [[ "$direnv_version" =~ 2\.[2-9][0-9]?\.[0-9]? ]]; then
     printf "${GREEN}✓✓✓ direnv installed!${NC}\n\n\n"
   else
-    printf "${RED}Output from version request: %s\n" "$direnv_version${NC}"
+    printf "${RED}Output from version request: %s${NC}\n" "$direnv_version"
     printf "${RED}Unexpected output from direnv installation. Please ask an instructor for help. ${NC}"
     echo -n "Proceed? [y/n]: "
     read ans
@@ -155,8 +155,8 @@ else
   if [[ "$atom_version" =~ 1\.[2-9][0-9]?\.[0-9]? ]]; then
     printf "${GREEN}✓✓✓ atom installed!${NC}\n\n\n"
   else
-    printf "${RED}Output from version request: %s\n" "$atom_version${NC}"
-    printf "${RED}Unexpected output from direnv installation. Please ask an instructor for help. ${NC}"
+    printf "${RED}Output from version request: %s${NC}\n" "$atom_version"
+    printf "${RED}Unexpected output from atom installation. Please ask an instructor for help. ${NC}"
     echo -n "Proceed? [y/n]: "
     read ans
     if [[ $ans == 'n' ]]; then
