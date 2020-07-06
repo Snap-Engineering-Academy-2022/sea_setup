@@ -10,9 +10,9 @@ NC='\033[0m'
 # file system creation
 printf "${BLUE}Creating file system...${NC}\n" sudo chown -R $(whoami) /usr/local/etc
 cd /Users/`whoami`/Desktop
-mkdir -p cs9
-cd cs9
-mkdir -p unit_00
+mkdir -p sea
+cd sea
+mkdir -p t1
 printf "${GREEN}✓✓✓ File system created!${NC}\n\n\n"
 
 #changing ownership of /usr/local/etc directories
@@ -69,19 +69,19 @@ else
   fi
 fi
 
-# python3 installation
-printf "${BLUE}Installing python3...${NC}\n"
-python3_version=$( python3 --version )
-if [[ "$python3_version" =~ "Python "3\.[0-9]\.[0-9]? ]]; then
-  printf "${GREEN}✓✓✓ Python3 already installed!${NC}\n\n\n"
+# node installation
+printf "${BLUE}Installing node.js...${NC}\n"
+node_version=$( node --version )
+if [[ "$node_version" =~ "Node "12\.[0-9]\.[0-9]? ]]; then
+  printf "${GREEN}✓✓✓ Node already installed!${NC}\n\n\n"
 else
-  brew install python3
-  python3_version=$( python3 --version )
-  if [[ "$python3_version" =~ "Python "3\.[0-9]\.[0-9]? ]]; then
-    printf "${GREEN}✓✓✓ Python3 installed!${NC}\n\n\n"
+  brew install node
+  node_version=$( node --version )
+  if [[ "$node" =~ "Node "12\.[0-9]\.[0-9]? ]]; then
+    printf "${GREEN}✓✓✓ Node installed!${NC}\n\n\n"
   else
-    printf "${RED}Output from version request: %s${NC}\n" "$python3_version"
-    printf "${RED}Unexpected output from Python3 installation. Please ask an instructor for help. ${NC}"
+    printf "${RED}Output from version request: %s${NC}\n" "$node_version"
+    printf "${RED}Unexpected output from Node installation. Please ask an instructor for help. ${NC}"
     read -p "Proceed? [y/n]: " ans
     if [[ $ans == 'n' ]]; then
       exit 1
@@ -109,26 +109,6 @@ else
   fi
 fi
 
-# direnv installation
-printf "${BLUE}Installing direnv...${NC}\n"
-direnv_version=$( direnv --version )
-if [[ "$direnv_version" =~ 2\.[2-9][0-9]?\.[0-9]? ]]; then
-  printf "${GREEN}✓✓✓ direnv already installed!${NC}\n\n\n"
-else
-  brew install direnv
-  direnv_version=$( direnv --version )
-  if [[ "$direnv_version" =~ 2\.[2-9][0-9]?\.[0-9]? ]]; then
-    printf "${GREEN}✓✓✓ direnv installed!${NC}\n\n\n"
-  else
-    printf "${RED}Output from version request: %s${NC}\n" "$direnv_version"
-    printf "${RED}Unexpected output from direnv installation. Please ask an instructor for help. ${NC}"
-    read -p "Proceed? [y/n]: " ans
-    if [[ $ans == 'n' ]]; then
-      exit 1
-    fi
-  fi
-fi
-
 # atom installation
 printf "${BLUE}Installing Atom...${NC}\n"
 atom_version=$( atom --version )
@@ -149,28 +129,6 @@ else
   fi
 fi
 
-# Setting up virtual environment
-printf "${BLUE}Creating virtual environment...${NC}\n"
-python3 -m venv env
-printf 'PATH_add env/bin' > .envrc
-if [ ! -e /Users/`whoami`/.bash_profile ]; then
-    printf 'eval "$(direnv hook bash)"' > /Users/`whoami`/.bash_profile
-else
-    printf '\neval "$(direnv hook bash)"' >> /Users/`whoami`/.bash_profile
-fi
-source ~/.bash_profile
-direnv allow .
-python_version=$( python --version )
-if [[ "$python_version" =~ "Python "3\.[0-9]\.[0-9]? ]]; then
-  printf "${GREEN}✓✓✓ Virtual environment created and auto-activiation configured!${NC}\n\n\n"
-else
-  printf "${RED}Using: %s, virtual environment auto-activation may not be configured.${NC}\n" "$python_version"
-  printf "${RED}Please ask an instructor for help. ${NC}"
-  read -p "Proceed? [y/n]: " ans
-  if [[ $ans == 'n' ]]; then
-    exit 1
-  fi
-fi
 
 printf "${PURPLE}Your computer is configured! Please restart Terminal. ${NC}\n"
 exit 0
