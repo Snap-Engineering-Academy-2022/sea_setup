@@ -35,7 +35,7 @@ else
   fi
 fi
 
-# macOS version check, Hombrew require 10.12 or higher
+# macOS version check, Homebrew requires 10.12 or higher
 printf "${BLUE}Checking macOS version...${NC}\n"
 os_version=$( defaults read loginwindow SystemVersionStampAsString )
 printf "You are running macOS verion %s.\n" $os_version
@@ -109,25 +109,26 @@ else
   fi
 fi
 
-# atom installation
-printf "${BLUE}Installing Atom...${NC}\n"
-atom_version=$( atom --version )
-if [[ "$atom_version" =~ 1\.[2-9][0-9]?\.[0-9]? ]]; then
-  printf "${GREEN}✓✓✓ atom already installed!${NC}\n\n\n"
+# yarn installation
+printf "${BLUE}Installing yarn...${NC}\n"
+yarn_version=$( yarn --version )
+if [[ "$yarn_version" =~ "yarn version "2\.[2-9][0-9]?\.[0-9]? ]]; then
+  printf "${GREEN}✓✓✓ yarn already installed!${NC}\n\n\n"
 else
-  brew cask install atom
-  atom_version=$( atom --version )
-  if [[ "$atom_version" =~ 1\.[2-9][0-9]?\.[0-9]? ]]; then
-    printf "${GREEN}✓✓✓ atom installed!${NC}\n\n\n"
+  brew install yarn
+  yarn_version=$( yarn --version )
+  if [[ "$yarn_version" =~ "yarn version "2\.[2-9][0-9]?\.[0-9]? ]]; then
+    printf "${GREEN}✓✓✓ yarn installed!${NC}\n\n\n"
   else
-    printf "${RED}Output from version request: %s${NC}\n" "$atom_version"
-    printf "${RED}Unexpected output from atom installation. Please ask an instructor for help. ${NC}"
+    printf "${RED}Output from version request: %s${NC}\n" "$yarn_version"
+    printf "${RED}Unexpected output from yarn installation. Please ask an instructor for help. ${NC}"
     read -p "Proceed? [y/n]: " ans
     if [[ $ans == 'n' ]]; then
       exit 1
     fi
   fi
 fi
+
 
 
 printf "${PURPLE}Your computer is configured! Please restart Terminal. ${NC}\n"
