@@ -1,4 +1,4 @@
-# SEA 2020 Scholar Coding Environment Setup
+# SEA 2022 Scholar Coding Environment Setup
 
 
 Copy this into a macOS Terminal prompt and press `return` to configure your computer for your SEA this summer!
